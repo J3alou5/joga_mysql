@@ -1,10 +1,25 @@
 <h1>Homepage</h1>
 
+<div class="login">
+    {{#if user}}
+        <p>Welcome, {{user.username}}!</p>
+        {{#isAdmin user}}
+            <a href="/article/create">Create New Article</a>
+        {{/isAdmin}}
+        <br>
+        <a href="/user/logout">Logout</a>
+    {{else}}
+        <a href="/user/login">Login</a>
+        <br>
+        <a href="/user/register">Register</a>
+    {{/if}}
+</div>
+
 <div class="article-list">
     {{#articles}}
         <article>
             <a href="/article/{{slug}}">
-            <img src="/images/{{image}}" alt="">
+                <img src="/images/{{image}}" alt="">
             </a>
             <h2><a href="/article/{{slug}}">{{name}}</a></h2>
         </article>
